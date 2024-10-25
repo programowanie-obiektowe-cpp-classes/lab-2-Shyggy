@@ -15,7 +15,12 @@ public:
         v1 = new Resource(*a.v1);
 
     }
-    ResourceManager& operator=(const ResourceManager& a) { v1 = new Resource(*a.v1);
+    ResourceManager& operator=(const ResourceManager& a) 
+    { 
+        if (this != &a) {
+            delete v1;
+            v1 = new Resource(*a.v1);
+        }
         return *this;
     }
     double get() { return (*v1).get();}
